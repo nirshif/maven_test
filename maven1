@@ -1,0 +1,43 @@
+<build>
+  <plugins>
+    <plugin>
+      <groupId>org.codehaus.mojo</groupId>
+      <artifactId>exec-maven-plugin</artifactId>
+      <version>3.0.0</version>
+      <executions>
+        <execution>
+          <id>pip-install</id>
+          <phase>test</phase>
+          <goals>
+            <goal>exec</goal>
+          </goals>
+          <configuration>
+            <workingDirectory>src/python</workingDirectory>
+            <executable>pip</executable>
+            <arguments>
+              <argument>install</argument>
+              <argument>-r</argument>
+              <argument>requirements.txt</argument>
+            </arguments>
+          </configuration>
+        </execution>
+
+        <execution>
+          <id>python-test</id>
+          <phase>test</phase>
+          <goals>
+            <goal>exec</goal>
+          </goals>
+          <configuration>
+            <workingDirectory>src/python</workingDirectory>
+            <executable>python</executable>
+            <arguments>
+              <argument>-m</argument>
+              <argument>unittest</argument>
+            </arguments>
+          </configuration>
+        </execution>
+      </executions>
+    </plugin>
+  </plugins>
+</build>
